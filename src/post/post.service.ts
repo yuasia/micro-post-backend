@@ -1,5 +1,5 @@
-import { ForbiddenException, Injectable } from '@nestjs/common';
-import { PrismaService } from 'src/prisma/prisma.service';
+import { ForbiddenException, Injectable } from "@nestjs/common";
+import { PrismaService } from "src/prisma/prisma.service";
 
 @Injectable()
 export class PostService {
@@ -46,7 +46,7 @@ export class PostService {
 
     const qb = await this.prisma.microPost.findMany({
       orderBy: {
-        created_at: 'desc',
+        created_at: "desc",
       },
       skip: start,
       take: nr_records,
@@ -94,11 +94,11 @@ export class PostService {
       where: {
         content: {
           contains: search,
-          mode: 'insensitive',
+          mode: "insensitive",
         },
       },
       orderBy: {
-        created_at: 'desc',
+        created_at: "desc",
       },
       include: {
         user: {
@@ -169,7 +169,7 @@ export class PostService {
 
     if (!post || post.user_id !== auth.user_id) {
       throw new ForbiddenException(
-        'You are not authorized to delete this post',
+        "You are not authorized to delete this post"
       );
     }
 
