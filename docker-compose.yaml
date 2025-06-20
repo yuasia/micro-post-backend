@@ -1,0 +1,30 @@
+services:
+  db:
+    image: postgres:latest
+    container_name: postgres
+    ports:
+      - '5432:5432'
+    environment:
+      - POSTGRES_DB=psqldb
+      - POSTGRES_USER=psqluser
+      - POSTGRES_PASSWORD=psqlpassword
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: nest-api
+    env_file:
+      - .env
+    ports:
+      - '3001:3001'
+      - '5555:5555'
+    working_dir: /usr/src/app
+    volumes:
+      - .:/usr/src/app
+    command: npm run start:dev
+
+volumes:
+  db_data:
