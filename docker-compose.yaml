@@ -3,7 +3,7 @@ services:
     image: postgres:latest
     container_name: postgres
     ports:
-      - '5432:5432'
+      - "5432:5432"
     environment:
       - POSTGRES_DB=psqldb
       - POSTGRES_USER=psqluser
@@ -19,8 +19,8 @@ services:
     env_file:
       - .env
     ports:
-      - '3001:3001'
-      - '5555:5555'
+      - "3001:3001"
+      - "5555:5555"
     working_dir: /usr/src/app
     volumes:
       - .:/usr/src/app
