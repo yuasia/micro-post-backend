@@ -11,7 +11,7 @@ RUN npx prisma generate
 
 COPY . .
 
-RUN npm run builder
+RUN npm run build
 
 FROM node:18-slim
 WORKDIR /usr/src/app
